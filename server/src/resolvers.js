@@ -10,8 +10,9 @@ export const resolvers = {
   Mutation: {
     addChannel: (root, args) => {
       const newChannel = { id: nextId++, name: args.name };
-      channelModel.insert({newChannel})
-      return newChannel;
+      const ch = new channelModel(newChannel);
+      ch.save((error, data) => {
+      })
     },
   },
 };
